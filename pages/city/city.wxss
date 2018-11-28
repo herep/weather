@@ -1,0 +1,110 @@
+.search{
+  width: 80%;
+}
+.search_arr {
+  border: 1px solid #d0d0d0;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+}
+.search_arr input{
+  margin-left: 60rpx;
+  height: 60rpx;
+  border-radius: 5px;
+}
+.bc_text {
+  line-height: 68rpx;
+  height: 68rpx;
+  margin-top: 34rpx;
+}
+ 
+.sousuo {
+  margin-left: 15rpx;
+  width: 15%;
+  line-height: 150%;
+  text-align: center;
+  border: 1px solid #d0d0d0;
+  border-radius: 10rpx;
+}
+.page_row{
+  display: flex;
+  flex-direction: row
+}
+.searchcion {
+  margin: 10rpx 10rpx 10rpx 10rpx;
+  position: absolute;
+  left:25rpx;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.how{
+  display:flex;
+  height:50rpx;
+  display: flex;
+  justify-content: left;
+}
+.how-t{
+  margin-top:20rpx;
+  width: 100%;
+  margin-right: 16rpx;
+  margin-left:16rpx;
+  border-radius: 15rpx;
+  font-size: 35rpx;
+  text-align: left;
+  line-height:30rpx;
+}
+
+.but{
+  display:flex;
+  flex-direction: row;
+   margin-top:30rpx;
+}
+
+.but-i {
+  margin-left: 15rpx;
+  height:65rpx;
+  width: 30%;
+  line-height: 150%;
+  text-align: center;
+  border: 1px solid #d0d0d0;
+  border-radius: 10rpx;
+}
+.f{
+  background-color:#A7D6F7;
+}
+
+.input-v{
+  display:flex;
+  height:50rpx;
+  display: flex;
+  justify-content: left;
+}
+
+.but-input-v{
+  margin-left: 15rpx;
+  height:65rpx;
+  width: 100%;
+  line-height: 150%;
+  text-align: left;
+
+}
+
+.old{
+  display:flex;
+  height:50rpx;
+  display: flex;
+  justify-content: left;
+}
+
+.old-t{
+  margin-top:50rpx;
+  width: 100%;
+  margin-right: 16rpx;
+  margin-left:16rpx;
+  border-radius: 15rpx;
+  font-size: 35rpx;
+  text-align: left;
+  line-height:30rpx;
+}

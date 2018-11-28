@@ -1,0 +1,48 @@
+
+ <view class='page_row' >
+    <view class="search">
+      <view class="df search_arr">
+        <icon class="searchcion" size='20' type='search'></icon>
+        <input class="" bindinput="bindkeyInput" placeholder="请输入城市名称" value="{{searchValue}}"/>
+      </view>
+    </view>
+    <view class='sousuo'>返回</view>
+</view>
+ 
+  <view class="but">
+      <view class="but-input-v" bindtap="clickFun">{{city}}</view>
+  </view>
+
+<view class='how'>
+  <view class="how-t">
+    <text>猜你想找</text>
+  </view>
+</view>
+
+<view class="but">
+ <view class="but-i f" bindtap="clickFun">定位</view>
+ <view class="but-i">北京市</view>
+ <view class="but-i">广州市</view>
+</view>
+<view class="but">
+ <view class="but-i">深圳市</view>
+ <view class="but-i">上海市</view>
+ <view class="but-i">南京市</view>
+</view>
+<view class="but">
+    <view class="but-i">杭州市</view>
+    <view class="but-i">合肥市</view>
+</view>
+
+<view class='old'>
+  <view class="old-t">
+    <text>历史记录</text>
+  </view>
+</view>
+
+
+
+
+
+
+
