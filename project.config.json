@@ -36,12 +36,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "city",
-					"pathName": "pages/city/city"
+					"pathName": "pages/city/city",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "days",
+					"pathName": "pages/days/days"
 				}
 			]
 		}

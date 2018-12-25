@@ -72,7 +72,7 @@ getCtiy:function(latitude,longitude){
     url:url,
     success:function(res){
    
-    
+      //获取城市信息
       var city = res.data.result.addressComponent.city;
       var province = res.data.result.addressComponent.province;
       var district = res.data.result.addressComponent.district;
@@ -100,5 +100,71 @@ clickFun:function(){
     wx.redirectTo({
       url:'/pages/index/index?city='+that.data.city+'&street_number='+that.data.street_number+'&street='+that.data.street+'&district='+that.data.district+''
     })
-}
+},
+
+clickcity:function(e){
+  var that = this
+    //请求接口地址
+ 
+    var i_city = e.currentTarget.dataset.city;
+    
+    var url = "https://api.map.baidu.com/geocoder/v2/";
+    //请求接口所需要的数据
+    var parm = {
+     address:i_city,
+      output:"json",
+      ak:"Q7cDNY8CEMAZfR37g5ulzGtBYQgX7rxG"
+     
+    }
+  
+    wx.request({
+      data:parm,
+      url:url,
+      success:function(res){
+      
+        //收集 输入城市信息
+        var lat = res.data.result.location.lat
+        var lng = res.data.result.location.lng
+  
+        var url = "https://api.map.baidu.com/geocoder/v2/";
+  //请求接口所需要的数据
+  var parm = {
+    location:lat+","+lng,
+    output:"json",
+    ak:"Q7cDNY8CEMAZfR37g5ulzGtBYQgX7rxG"
+   
+  }
+
+  wx.request({
+    data:parm,
+    url:url,
+    success:function(res){
+   
+      //获取城市信息
+      var city = res.data.result.addressComponent.city;
+      var province = res.data.result.addressComponent.province;
+      var district = res.data.result.addressComponent.district;
+      var street = res.data.result.addressComponent.street;
+      var street_number = res.data.result.addressComponent.street_number
+
+      wx.redirectTo({
+          url:'/pages/index/index?city='+city+'&street_number='+street_number+'&street='+street+'&district='+district+''
+     })
+    
+    },
+    fail:function(res){},
+    complete:function(res){},
+  })
+
+      },
+      fail:function(res){},
+      complete:function(res){},
+    })
+
+  
+   
+},
+
+
+
 })

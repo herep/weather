@@ -1,0 +1,53 @@
+
+<view >
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">今天</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">明天</view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">后天</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+        <swiper-item >
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block >
+                    <view class="container"> 
+                    <view class="nowWeather">
+                        <view class="temp  b">2°</view>   
+                    </view>
+
+                    <view class="weahterDetail">
+                        <view class="l"></view>
+                        <view class="">
+                        <view class=" center">相对湿度hum</view>
+                        <view class=" b center f50">%</view>
+                        </view>
+                        <view class="l"></view>
+                        <view class="">
+                        <view class=" center">体感温度</view>
+                        <view class="b center f50">1°</view>
+                        </view>   
+                    </view> 
+                    </view>
+
+                </block>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item >
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block >
+                    <view class="item-ans">
+                      <view>{{ daily_forecast[1]}}</view>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item >
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block >
+                    <view class="item-ans">
+                        <view>{{ daily_forecast[1] }}</view>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

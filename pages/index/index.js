@@ -1,15 +1,19 @@
 //index.js
 //获取应用实例
-var app = getApp()
+
 var day = ["今天", "明天", "后天"];
  Page({
 
    data: {
-    day:day,
+     timer:'',
+     num: 9,
+     day:day,
+     lifestyle:[],
+     airArray:{},
+     t:''
    },
 
    clickFun:function(){
-    // console.log();
     wx.redirectTo({
      url: '/pages/city/city',
    })
@@ -17,15 +21,17 @@ var day = ["今天", "明天", "后天"];
   },
 
   onLoad: function (option) {
-     var that = this;
-
+    var that = this;
+    //获取小程序实例
+    that.app =  getApp();
+    
      if(option.city)
      {
        var city = option.city;
        var  district = option. district;
        var street = option.street;
        var  street_number=option.street_number;
-
+ 
 
          // 将数据设置调用‘
          that.setData({
@@ -34,9 +40,7 @@ var day = ["今天", "明天", "后天"];
           street:street,
           street_number:street_number
         })
- 
-         //删除 市 字
-       // var desCity =  city.substring(0,city.length - 1);
+  
     
      //查询 所在地 天气
      that.getWeahter(city);
@@ -48,6 +52,13 @@ var day = ["今天", "明天", "后天"];
       that.getLocation();
      }
      
+     //调用定时器
+    that.countDown();
+     //调用动画  this.app.show(this, 'slide_up1', -20, that.data.t)
+     setTimeout(function () {
+      this.app.slideupshow(this, 'slide_up1', -20, 0)
+    }.bind(this), 200);
+  
   },
 
 
@@ -74,7 +85,7 @@ getLocation:function (){
 getCtiy:function(latitude,longitude){
   var that = this
   //请求接口地址
-  //console.log(latitude,longitude);
+
   var url = "https://api.map.baidu.com/geocoder/v2/";
   //请求接口所需要的数据
   var parm = {
@@ -93,7 +104,7 @@ getCtiy:function(latitude,longitude){
       var district = res.data.result.addressComponent.district;
       var street = res.data.result.addressComponent.street;
       var street_number = res.data.result.addressComponent.street_number
-           // console.log(city);
+           
       // 将数据设置调用‘
        that.setData({
          city:city,
@@ -102,9 +113,7 @@ getCtiy:function(latitude,longitude){
          street_number:street_number
        })
 
-        //删除 市 字
-   // var desCity =  city.substring(0,city.length - 1);
-   
+ 
     //查询 所在地 天气
     that.getWeahter(city);
     //获取空气质量
@@ -115,8 +124,6 @@ getCtiy:function(latitude,longitude){
   })
 
 },
-
-
 
 
 //获取天气信息
@@ -149,9 +156,10 @@ getWeahter:function(city)
       var fl = result.data.HeWeather6[0].now.fl;
       //三天的天气情况
       var daily_forecast = result.data.HeWeather6[0].daily_forecast;
+      //生活建议
+      var lifestyle = result.data.HeWeather6["0"].lifestyle;
 
-      //console.log(result);
-
+      
       //设置 数据
       that.setData({
         tmp:tmp,
@@ -161,8 +169,11 @@ getWeahter:function(city)
         sc :sc,
         hum:hum,
         fl:fl, 
-        daily_forecast:daily_forecast  
+        daily_forecast:daily_forecast,
+        lifestyle:lifestyle,
+        airArray:lifestyle[0]
       })
+      
     },
     fail: (result)=>{},
     complete: (result)=>{}
@@ -183,18 +194,50 @@ getari:function(city)
     url: url,
     data: parms,
     success: (result)=>{
-      //console.log(result);
       var qlty = result.data.HeWeather6["0"].air_now_city.qlty
-
       that.setData({
-        qlty:qlty
+        qlty:qlty,      
       })
+
     },
     fail: ()=>{},
     complete: ()=>{}
   });
 },
 
-  
+//使用定时器 置换文档
+countDown: function() {
+  var that = this;
+  var num = 8;
+
+  that.setData({
+    timer:setInterval(function() {
+      //下标递减
+      --num;
+      //判断
+      if(num < 0){
+        num = 8
+        that.setData({
+          airArray:that.data.lifestyle[0]
+        })
+      }else{
+        that.setData({
+          airArray:that.data.lifestyle[num]
+        })
+      }
+    },5000)
+  })
+
+},
+
+ //跳转 显示三天天气信息页面
+ clickDays:function()
+{
+  var that = this
+  var city= that.data.city; 
+   wx.redirectTo({
+    url:'/pages/days/days?city='+city  
+   })
+},
 
 })

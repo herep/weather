@@ -6,7 +6,7 @@
         <input class="" bindinput="bindkeyInput" placeholder="请输入城市名称" value="{{searchValue}}"/>
       </view>
     </view>
-    <view class='sousuo'>返回</view>
+    <view class='sousuo' bindtap="clickFun">返回</view>
 </view>
  
   <view class="but">
@@ -20,18 +20,18 @@
 </view>
 
 <view class="but">
- <view class="but-i f" bindtap="clickFun">定位</view>
- <view class="but-i">北京市</view>
- <view class="but-i">广州市</view>
+ <view class="but-i f" bindtap="clickFun" data-city='定位' >定位</view>
+ <view class="but-i"  data-city='北京市'  bindtap="clickcity">北京市</view>
+ <view class="but-i"  data-city='广州市' bindtap="clickcity">广州市</view>
 </view>
 <view class="but">
- <view class="but-i">深圳市</view>
- <view class="but-i">上海市</view>
- <view class="but-i">南京市</view>
+ <view class="but-i" data-city='深圳市'  bindtap="clickcity">深圳市</view>
+ <view class="but-i" data-city='上海市'  bindtap="clickcity">上海市</view>
+ <view class="but-i" data-city='南京市'  bindtap="clickcity">南京市</view>
 </view>
 <view class="but">
-    <view class="but-i">杭州市</view>
-    <view class="but-i">合肥市</view>
+    <view class="but-i" data-city='杭州市'  bindtap="clickcity">杭州市</view>
+    <view class="but-i" data-city='合肥市'  bindtap="clickcity">合肥市</view>
 </view>
 
 <view class='old'>

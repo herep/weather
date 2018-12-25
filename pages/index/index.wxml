@@ -5,7 +5,8 @@
     <view class="city w" bind:tap="clickFun">{{city}} | {{district}}</view>
     <view class="road w">{{street}}{{street_number}}</view>
     <view class="temp w b">{{tmp}}°</view>
-    <view class="weather w">{{txt}} | 空气 {{qlty}}</view>
+    <view class="weather w">{{txt}} | 空气 {{qlty}}</view>  
+    <view  animation="{{slide_up1}}" class="top">{{ airArray.txt }}</view>  
   </view>
 
  <view class="weahterDetail">
@@ -23,13 +24,12 @@
     <view class="">
       <view class="w center">体感温度</view>
       <view class="w b center f50">{{fl}}°</view>
-    </view>
-  </view>
-
+    </view>   
+  </view> 
 </view>
 
-<view wx:for="{{daily_forecast}}"  wx:for-index="i" wx:for-item="item" wx:key=""> 
-<view class="hor forcast">
+<view wx:for="{{daily_forecast}}"  wx:for-index="i" wx:for-item="item" wx:key="" > 
+<view class="hor forcast"bindtap="clickDays">
   <view class="center">{{day[i]}}</view>
   <view class="hor">
     <image class="img" src="../images/{{item.cond_code_d}}.png"></image>
